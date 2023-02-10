@@ -1,17 +1,13 @@
 import React, { Component } from "react";
-import shortid from "shortid";
 import { Button, Form, Input, Label } from "./ContactForm.styled";
 
 
 export class ContactForm extends Component {
     state = {
-        id: '',
         name: '',
         number: '',
     };
 
-    nameInputId = shortid.generate();
-    numberInputId = shortid.generate();
 
     handleChange = ({ target: { name, value } }) => {
         this.setState({
@@ -34,10 +30,9 @@ export class ContactForm extends Component {
 
         return (
             <Form onSubmit={this.handleSubmit}>
-                <Label htmlFor={this.nameInputId}>Name:
+                <Label>Name:
                     <Input
                         value={name}
-                        id={this.nameInputId}
                         onChange={this.handleChange}
                         type="text"
                         name="name"
@@ -46,10 +41,9 @@ export class ContactForm extends Component {
                         required
                     />
                 </Label>
-                <Label htmlFor={this.numberInputId}>Number:
+                <Label>Number:
                     <Input
                         value={number}
-                        id={this.numberInputId}
                         onChange={this.handleChange}
                         type="tel"
                         name="number"
