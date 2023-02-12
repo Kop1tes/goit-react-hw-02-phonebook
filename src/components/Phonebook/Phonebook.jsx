@@ -22,7 +22,8 @@ export class Phonebook extends Component {
         const searchSameName = this.state.contacts.map((cont) => cont.name).includes(data.name);
 
         if (searchSameName) {
-            return alert(`${data.name} is already in contacts`);
+            alert(`${data.name} is already in contacts`);
+            return true;       // To handle reset method not to delete user name and phone number 
         } else if (data.name.length === 0) {
             return alert("Fields must be filled!")
         }

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Button, Form, Input, Label } from "./ContactForm.styled";
+import { data } from "components/Data/Data";
 
 
 export class ContactForm extends Component {
     state = {
         name: '',
         number: '',
+        contacts: data,
     };
 
 
@@ -17,9 +19,12 @@ export class ContactForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.addUser({ ...this.state });
-        this.reset();
+
+        if (!this.props.addUser({ ...this.state })) {
+            this.reset();
+        }
     };
+
 
     reset = () => {
         this.setState({ name: '', number: '' });
